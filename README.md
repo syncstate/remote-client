@@ -2,7 +2,7 @@
 
 > Note: Only basic APIs are ready. Core functionality hasn't been implemented.
 
-SyncState Remote plugin has two parts `[@syncstate/remote-client](https://github.com/syncstate/remote-client)` and `[@syncstate/remote-server](https://github.com/syncstate/remote-server)`.
+SyncState Remote plugin has two parts [@syncstate/remote-client](https://github.com/syncstate/remote-client) and [@syncstate/remote-server](https://github.com/syncstate/remote-server).
 
 Remote plugin helps you implement multiplayer functionality for your app. 
 
