@@ -7,6 +7,10 @@
     "dist",
     "src"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syncstate/remote-client.git"
+  },
   "publishConfig": {
     "access": "public"
   },
