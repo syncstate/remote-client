@@ -37,6 +37,20 @@ export function observeStatus(store: DocStore, path: string, callback: any) {
     }
   );
 }
+export function onChange(store: DocStore, path: string, callback: any) {
+  return store.observe(
+    'doc',
+    path,
+    (dataAtPath: any, change: any) => {
+      if (!change.origin && !getLoading(store, path)) {
+        // Don't emit for patches received from server
+        change = getModifiedChangeForPath(change, path);
+        callback(change);
+      }
+    },
+    Infinity
+  );
+}
 
 export const createInitializer = (pluginName: string = 'remote') => (
   store: DocStore
@@ -82,10 +96,20 @@ export const createInitializer = (pluginName: string = 'remote') => (
 
         case 'APPLY_REMOTE':
           {
+            console.log(
+              'APPLY_REMOTE patch',
+              getModifiedChangeForRoot(
+                action.payload.change,
+                action.payload.path
+              )
+            );
             store.dispatch({
               type: 'PATCH',
               payload: {
-                ...action.payload.change,
+                ...getModifiedChangeForRoot(
+                  action.payload.change,
+                  action.payload.path
+                ),
                 patchType: 'NO_RECORD',
                 subtree: 'doc',
               },
@@ -100,3 +124,30 @@ export const createInitializer = (pluginName: string = 'remote') => (
     },
   };
 };
+
+function getModifiedChangeForPath(change: any, path: string) {
+  return {
+    ...change,
+    patch: {
+      ...change.patch,
+      path: change.patch.path.substr(path.length),
+    },
+    inversePatch: {
+      ...change.inversePatch,
+      path: change.inversePatch.path.substr(path.length),
+    },
+  };
+}
+function getModifiedChangeForRoot(change: any, path: string) {
+  return {
+    ...change,
+    patch: {
+      ...change.patch,
+      path: path + change.patch.path,
+    },
+    inversePatch: {
+      ...change.inversePatch,
+      path: path + change.inversePatch.path,
+    },
+  };
+}

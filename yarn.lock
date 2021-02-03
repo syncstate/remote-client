@@ -1058,10 +1058,10 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@syncstate/core@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/@syncstate/core/-/core-0.5.0.tgz#a78eb534e587fee0aa404a2fbaf10f13ef383b3e"
-  integrity sha512-ijfPmvIjNrlKkVrVeWNoToE37WES6UlUf/S/qGh/gPDPTMELipl8DPHUSA+cqVezD17GLkTX3MENPCdJ6YwTyA==
+"@syncstate/core@0.7.0-rc.6":
+  version "0.7.0-rc.6"
+  resolved "https://registry.npmjs.org/@syncstate/core/-/core-0.7.0-rc.6.tgz#44bb04adddbb8a54b216d785ef39c06c09bfd182"
+  integrity sha512-b6/q3GJytEQRU4+1ZuFz887giO/0O4RLgnA8qy8nEvyhZKPlRJr8QBfcB7hGDLZGCT5fInJWPtSNs8niKmoliQ==
   dependencies:
     immer "^7.0.7"
     lodash.get "^4.4.2"
