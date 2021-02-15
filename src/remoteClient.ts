@@ -132,10 +132,12 @@ function getModifiedChangeForPath(change: any, path: string) {
       ...change.patch,
       path: change.patch.path.substr(path.length),
     },
-    inversePatch: {
-      ...change.inversePatch,
-      path: change.inversePatch.path.substr(path.length),
-    },
+    inversePatch: change.inversePatch
+      ? {
+          ...change.inversePatch,
+          path: change.inversePatch.path.substr(path.length),
+        }
+      : undefined,
   };
 }
 function getModifiedChangeForRoot(change: any, path: string) {
