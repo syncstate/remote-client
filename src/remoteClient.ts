@@ -96,13 +96,13 @@ export const createInitializer = (pluginName: string = 'remote') => (
 
         case 'APPLY_REMOTE':
           {
-            console.log(
-              'APPLY_REMOTE patch',
-              getModifiedChangeForRoot(
-                action.payload.change,
-                action.payload.path
-              )
-            );
+            // console.log(
+            //   'APPLY_REMOTE patch',
+            //   getModifiedChangeForRoot(
+            //     action.payload.change,
+            //     action.payload.path
+            //   )
+            // );
             store.dispatch({
               type: 'PATCH',
               payload: {
